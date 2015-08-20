@@ -1,0 +1,19 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:background="#0099cc" tools:context=".MainActivity">
+
+    <!-- This FrameLayout insets its children based on system windows using
+         android:fitsSystemWindows. -->
+    <FrameLayout android:layout_width="match_parent" android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+
+        <Switch
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:id="@+id/switch1"
+            android:layout_gravity="center_horizontal|bottom"
+            android:checked="false"
+            android:layout_marginBottom="20dp" />
+    </FrameLayout>
+
+</FrameLayout>

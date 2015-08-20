@@ -2,14 +2,15 @@ package com.main;
 
 import java.awt.EventQueue;
 
+import quadx.comm.MavLinkRadioStream;
 import quadx.drone.controller.Drone;
 import quadx.drone.controller.utils.exceptions.DroneConnectionException;
 
 import com.huston.HustonComponent;
-import com.huston.data.RadioConfig;
 import com.huston.frames.ControlFrame;
 import com.huston.jxinput.InputDevice;
 import com.huston.jxinput.KeyboardInputDevice;
+import comm.win.WinMavLinkRadioStream;
 
 public class Huston {
 
@@ -19,16 +20,18 @@ public class Huston {
 	public static void main(String[] args) {
 		// --------------------------------------------------------------
 		try {
-			drone = new Drone(RadioConfig.NETWORK_ID, RadioConfig.DRONE_ID);
-			String port = RadioConfig.PORT;
-			int buadRate = RadioConfig.BUAD_RATE;
+			String port = DroneConfig.PORT;
+			int baudRate = DroneConfig.BAUD_RATE;
 			if(args.length>=1) {
 				port = args[0];
 			}
 			if(args.length>=2) {
-				buadRate = Integer.parseInt(args[1]);
+				baudRate = Integer.parseInt(args[1]);
 			}
-			drone.connect(port, buadRate);
+			
+			MavLinkRadioStream radioStream = new WinMavLinkRadioStream(port, baudRate);
+			drone = new Drone(DroneConfig.NETWORK_ID, DroneConfig.DRONE_ID, radioStream);
+			drone.connect();
 			HustonComponent.setDrone(drone);
 		} catch (DroneConnectionException e) {
 			e.printStackTrace();

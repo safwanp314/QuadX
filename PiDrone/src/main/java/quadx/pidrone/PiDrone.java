@@ -4,7 +4,6 @@ import java.util.Date;
 
 import quadx.comm.MavLinkRadioStream;
 import quadx.comm.exceptions.RadioConnectionException;
-import quadx.comm.pi4j.Pi4jMavLinkRadioStream;
 import quadx.pidrone.action.PiDroneActionHandler;
 import quadx.pidrone.command.listeners.PiDroneCommandEventListener;
 import quadx.pidrone.control.PiDroneController;
@@ -43,39 +42,39 @@ public class PiDrone {
 	public boolean active;
 	// --------------------------------------------
 	//action
-	private PiDroneActionHandler actionHandler = new PiDroneActionHandler(this);
+	private final PiDroneActionHandler actionHandler = new PiDroneActionHandler(this);
 	public PiDroneActionHandler getActionHandler() {
 		return actionHandler;
 	}
 	// --------------------------------------------
 	//status
-	private DroneStatus status = new DroneStatus();
+	private final DroneStatus status = new DroneStatus();
 	public DroneStatus getStatus() {
 		return status;
 	}
 	// --------------------------------------------
 	//navigation
-	private ArduImu imu = new ArduImu();
-	private AhrsNav nav = new AhrsNav(imu);
+	private final ArduImu imu = new ArduImu();
+	private final AhrsNav nav = new AhrsNav(imu);
 	public AhrsNav getNav() {
 		return nav;
 	}
 	// --------------------------------------------
 	//throttle
-	private DroneThrottle throttle = new DroneThrottle();
+	private final DroneThrottle throttle = new DroneThrottle();
 	public DroneThrottle getThrottle() {
 		return throttle;
 	}
 	// --------------------------------------------
 	//propeller
-	private PropellersDriver propDriver = new PropellersDriver();
-	private DronePropellers propellers = new DronePropellers(propDriver);
+	private final PropellersDriver propDriver = new PropellersDriver();
+	private final DronePropellers propellers = new DronePropellers(propDriver);
 	public DronePropellers getPropellers() {
 		return propellers;
 	}
 	// --------------------------------------------
 	//guidence
-	private PiDroneGuidence guidence = new PiDroneGuidence();
+	private final PiDroneGuidence guidence = new PiDroneGuidence();
 	public PiDroneGuidence getGuidence() {
 		return guidence;
 	}
@@ -85,25 +84,23 @@ public class PiDrone {
 		return startTime;
 	}
 	//--------------------------------------------
-	private MavLinkRadioStream radioStream;
+	private final MavLinkRadioStream radioStream;
 	public MavLinkRadioStream getRadioStream() {
 		return radioStream;
 	}
-	private String port = "/dev/ttyAMA0";
-	private int baudRate = 57600;
 	//--------------------------------------------
 	private PiDroneController controller = new PiDroneController(this);
 	//--------------------------------------------
-	public PiDrone(int networkId, int droneId) {
+	public PiDrone(int networkId, int droneId, MavLinkRadioStream radioStream) {
 		super();
 		this.networkId = networkId;
 		this.droneId = droneId;
+		this.radioStream = radioStream;
 	}
 	
 	public void connect() throws RadioConnectionException {
 		System.out.println("connecting ...");
 		
-		radioStream = new Pi4jMavLinkRadioStream(port, baudRate);
 		try {
 			radioStream.connect();
 			connected = radioStream.isConnected();
@@ -117,12 +114,6 @@ public class PiDrone {
 			e.printStackTrace();
 			throw e;
 		}
-	}
-	
-	public void connect(String port, int baudRate) throws RadioConnectionException {
-		this.port = port;
-		this.baudRate = baudRate;
-		connect();
 	}
 		
 	public void initilize() {

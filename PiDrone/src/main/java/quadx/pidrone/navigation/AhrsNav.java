@@ -25,7 +25,7 @@ public class AhrsNav {
 	private long lastSampleTimeStamp;
 
 	private ArduImu imu;
-	private final float[] imuAngle = {0.0f, 0.0f, 90.0f};
+	private final float[] imuAngle = {0.0f, 0.0f, -90.0f};
 		
 	public AhrsNav(ArduImu imu) {
 		this.imu = imu;
@@ -34,7 +34,7 @@ public class AhrsNav {
 	public void readNav() {
 		imu.readImu();
 		
-		float[] imuAxis = {imu.pitch, imu.roll, imu.yaw};
+		float[] imuAxis = {imu.pitch, -imu.roll, imu.yaw};
 		float[] droneAxis = MathUtils.axisConversion(imuAxis, imuAngle);
 		
 		float tempPitch = droneAxis[0];
@@ -55,7 +55,6 @@ public class AhrsNav {
 		
 		yawRate = (tempYaw-yaw)/dt;
 		yaw = tempYaw;
-		
 		climbRate = (tempAltitude-altitude)/dt;
 		altitude = tempAltitude;
 		
@@ -80,5 +79,4 @@ public class AhrsNav {
 			NavigationSendActivity navigationSendActivity) {
 		this.navigationSendActivity = navigationSendActivity;
 	}
-
 }

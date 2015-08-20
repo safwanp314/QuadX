@@ -30,12 +30,6 @@ import quadx.comm.listeners.MavLinkThrottleEventListener;
 
 public abstract class MavLinkRadioStream {
 
-	public static final String DEFAULT_COM_PORT = "/dev/ttyAMA0";
-	public static final int DEFAULT_BUAD_RATE = 9600;
-	public static final int DEFAULT_MONITOR_INTERVAL = 100; // milliseconds
-
-	protected String port = DEFAULT_COM_PORT;
-	protected int baudRate = DEFAULT_BUAD_RATE;
 	// --------------------------------------------
 	protected InputStream serialInStream = null;
 	protected OutputStream serialOutStream = null;
@@ -106,16 +100,9 @@ public abstract class MavLinkRadioStream {
 	}
 
 	// --------------------------------------------
-	public MavLinkRadioStream(String port, int baudRate) {
-		this.port = port;
-		this.baudRate = baudRate;
-	}
-
-	// --------------------------------------------
 	public abstract void connect() throws RadioConnectionException;
 
 	public abstract void close();
-
 	// --------------------------------------------
 	public void sendMessage(MAVLinkPacket packet) {
 		byte[] packetBytes = packet.encodePacket();

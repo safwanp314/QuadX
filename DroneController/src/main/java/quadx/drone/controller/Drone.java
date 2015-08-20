@@ -1,7 +1,7 @@
 package quadx.drone.controller;
 
+import quadx.comm.MavLinkRadioStream;
 import quadx.comm.exceptions.RadioConnectionException;
-import quadx.comm.win.WinMavLinkRadioStream;
 import quadx.drone.controller.command.DroneCommand;
 import quadx.drone.controller.command.activities.DroneCommandSendActivity;
 import quadx.drone.controller.command.listeners.DroneCommandAckEventListener;
@@ -36,63 +36,62 @@ public class Drone {
 		return connected;
 	}
 	// --------------------------------------------
-	private DroneStatus status = new DroneStatus();
+	private final DroneStatus status = new DroneStatus();
 	public DroneStatus getStatus() {
 		return status;
 	}
 	// --------------------------------------------
-	private DroneActionHandler actionHandler = new DroneActionHandler(this);
+	private final DroneActionHandler actionHandler = new DroneActionHandler(this);
 	public DroneActionHandler getActionHandler() {
 		return actionHandler;
 	}
 	// --------------------------------------------
 	//event
-	private DroneEventHandler eventHandler = new DroneEventHandler(this);
+	private final DroneEventHandler eventHandler = new DroneEventHandler(this);
 	public DroneEventHandler getEventHandler() {
 		return eventHandler;
 	}
 	// --------------------------------------------
 	//throttle
-	private DroneThrottle throttle = new DroneThrottle();
+	private final DroneThrottle throttle = new DroneThrottle();
 	public DroneThrottle getThrottle() {
 		return throttle;
 	}
 	// --------------------------------------------
 	//propeller
-	private DroneCommand command = new DroneCommand();
+	private final DroneCommand command = new DroneCommand();
 	public DroneCommand getCommand() {
 		return command;
 	}
 	// --------------------------------------------
 	//navigation
-	private AhrsNav nav = new AhrsNav();
+	private final AhrsNav nav = new AhrsNav();
 	public AhrsNav getNav() {
 		return nav;
 	}
 	// --------------------------------------------
 	//guidence
-	private DroneGuidence guidence = new DroneGuidence();
+	private final DroneGuidence guidence = new DroneGuidence();
 	public DroneGuidence getGuidence() {
 		return guidence;
 	}
 	// --------------------------------------------
 	//propeller
-	private DronePropellers propellers = new DronePropellers();
+	private final DronePropellers propellers = new DronePropellers();
 	public DronePropellers getPropellers() {
 		return propellers;
 	}
 	// --------------------------------------------
-	private WinMavLinkRadioStream radioStream = new WinMavLinkRadioStream();
-	public WinMavLinkRadioStream getRadioStream() {
+	private final MavLinkRadioStream radioStream;
+	public MavLinkRadioStream getRadioStream() {
 		return radioStream;
 	}
-	private String port = "COM1";
-	private int baudRate = 57600;
 	// --------------------------------------------
-	public Drone(int networkId, int droneId) {
+	public Drone(int networkId, int droneId, MavLinkRadioStream radioStream) {
 		super();
 		this.networkId = networkId;
 		this.droneId = droneId;
+		this.radioStream = radioStream;
 		initilize();
 	}
 	
@@ -116,7 +115,7 @@ public class Drone {
 	
 	public void connect() throws DroneConnectionException {
 		try {			
-			radioStream.connect(port, baudRate);
+			radioStream.connect();
 			connected = radioStream.isConnected();
 		} catch (RadioConnectionException e) {
 			e.printStackTrace();
@@ -124,13 +123,6 @@ public class Drone {
 		}
 	}
 
-	public void connect(String port, int baudRate)
-			throws DroneConnectionException {
-		this.port = port;
-		this.baudRate = baudRate;
-		connect();
-	}
-	
 	public void close() throws DroneConnectionException {
 		radioStream.close();
 	}

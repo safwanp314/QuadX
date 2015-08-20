@@ -16,6 +16,7 @@ public class SpeedGaugePanel extends JPanel {
 	 * Create the panel.
 	 */
 	private Image image;
+	private Image needle;
 	private int size;
 	
 	public SpeedGaugePanel() {
@@ -35,6 +36,11 @@ public class SpeedGaugePanel extends JPanel {
 		try {
 			Image tImage = ImageIO.read(getClass().getResource("/images/gauge_frame01.png"));
 			image = tImage.getScaledInstance(size, size, Image.SCALE_SMOOTH);
+			
+			Image tNeedle = ImageIO.read(getClass().getResource("/images/needle.png"));
+			int needleHeight = (int) (0.52*size);
+			int needleWidth = needleHeight*tNeedle.getWidth(null)/tNeedle.getHeight(null);
+			needle = tNeedle.getScaledInstance(needleWidth, needleHeight, Image.SCALE_SMOOTH);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -45,27 +51,9 @@ public class SpeedGaugePanel extends JPanel {
 		super.paintComponent(graphics);
 		Graphics2D g = (Graphics2D) graphics;
 		g.drawImage(image, 0, 0, size, size, null, null);
-		/*g.setColor(Color.LIGHT_GRAY);
-		
-		double radius = 0.40*size;
-		double cenX = size/2;
-		double cenY = size/2;
-		int[] xPoints = new int[4];
-		int[] yPoints = new int[4];
-		
-		float[] fractions = {0.0f, 1.0f};
-		Color[] colors = {Color.WHITE , new Color(0,33,33,33)};
-		for(double i=22.5;i<345;i=i+15) {
-			
-			GaugesUtil.circularRectagles(cenX, cenY, radius-8, 2*(i-90), 0.067*size , 0.05*size, xPoints, yPoints);
-			Point start = new Point( (xPoints[0]+xPoints[1]+xPoints[2]+xPoints[3])/4,
-									 (yPoints[0]+yPoints[1]+yPoints[2]+yPoints[3])/4 );
-			Point end = new Point( (xPoints[0]+xPoints[1])/2,
-					 				(yPoints[0]+yPoints[1])/2 );
-			LinearGradientPaint paint = new LinearGradientPaint(start, end, fractions, colors,CycleMethod.REFLECT);
-			g.setPaint(paint);
-			g.fillPolygon(xPoints, yPoints, 4);
-		}*/
-
+		g.drawImage(needle, (size-needle.getWidth(null))/2, 
+							size/2-needle.getHeight(null)+20, 
+							needle.getWidth(null), 
+							needle.getHeight(null), null, null);
 	}
 }
