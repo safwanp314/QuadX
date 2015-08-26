@@ -83,4 +83,6 @@ public interface UsbSerialPort {
     public int write(final byte[] src, final int timeoutMillis) throws IOException;
 
     public void setParameters(int baudRate, int dataBits, int stopBits, int parity) throws IOException;
+
+    public void setSerialPortEventListener(UsbSerialPortEventListener serialPortEventListener);
 }

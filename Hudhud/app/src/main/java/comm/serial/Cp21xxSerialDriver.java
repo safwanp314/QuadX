@@ -8,6 +8,7 @@ import android.hardware.usb.UsbManager;
 import android.util.Log;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -25,19 +26,25 @@ public class Cp21xxSerialDriver implements UsbSerialDriver {
     public static final int SILABS_CP2105 = 0xea70;
     public static final int SILABS_CP2108 = 0xea71;
     public static final int SILABS_CP2110 = 0xea80;
+    private static final Map<Integer, List<Integer>> supportedDevices = new LinkedHashMap<Integer, List<Integer>>();
 
     private final UsbDevice mDevice;
     private final UsbSerialPort mPort;
+
+    static {
+        List<Integer> silabsDevicesList = new ArrayList<Integer>(4);
+        silabsDevicesList.add(SILABS_CP2102);
+        silabsDevicesList.add(SILABS_CP2105);
+        silabsDevicesList.add(SILABS_CP2108);
+        silabsDevicesList.add(SILABS_CP2110);
+        supportedDevices.put(VENDOR_SILABS, silabsDevicesList);
+    }
 
     public Cp21xxSerialDriver(UsbManager usbManager) {
         UsbDevice device = null;
         for (final UsbDevice usbDevice : usbManager.getDeviceList().values()) {
             if (usbDevice.getVendorId() == VENDOR_SILABS) {
-                if (usbDevice.getProductId() == SILABS_CP2102
-                        || usbDevice.getProductId() == SILABS_CP2105
-                        || usbDevice.getProductId() == SILABS_CP2108
-                        || usbDevice.getProductId() == SILABS_CP2110) {
-
+                if (supportedDevices.get(VENDOR_SILABS).contains(usbDevice.getProductId())) {
                     device = usbDevice;
                     break;
                 }
@@ -58,23 +65,12 @@ public class Cp21xxSerialDriver implements UsbSerialDriver {
         return Collections.singletonList(mPort);
     }
 
-    public static Map<Integer, int[]> getSupportedDevices() {
-        final Map<Integer, int[]> supportedDevices = new LinkedHashMap<Integer, int[]>();
-        supportedDevices.put(Integer.valueOf(VENDOR_SILABS),
-                new int[]{
-                        SILABS_CP2102,
-                        SILABS_CP2105,
-                        SILABS_CP2108,
-                        SILABS_CP2110
-                });
+    public static Map<Integer, List<Integer>> getSupportedDevices() {
         return supportedDevices;
     }
 
-    public class Cp21xxSerialPort extends CommonUsbSerialPort {
+    public class Cp21xxSerialPort extends AbstractUsbSerialPort {
 
-        private static final int DEFAULT_BAUD_RATE = 9600;
-
-        private static final int USB_WRITE_TIMEOUT_MILLIS = 5000;
         private static final int REQTYPE_HOST_TO_DEVICE = 0x41;
 
         private static final int IFC_ENABLE_REQUEST_CODE = 0x00;
@@ -148,8 +144,6 @@ public class Cp21xxSerialDriver implements UsbSerialDriver {
                 setConfigSingle(SET_MHS_REQUEST_CODE, MCR_ALL | CONTROL_WRITE_DTR | CONTROL_WRITE_RTS);
                 setConfigSingle(SET_BAUDDIV_REQUEST_CODE, BAUD_RATE_GEN_FREQ / DEFAULT_BAUD_RATE);
                 opened = true;
-            } catch (Exception e) {
-                throw e;
             } finally {
                 if (!opened) {
                     close();
