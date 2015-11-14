@@ -15,7 +15,8 @@ public class DroneConfig {
 	static {
 		try {
 			Properties props = new Properties();
-			props.load(new FileInputStream("config.properties"));
+			ClassLoader loader = Thread.currentThread().getContextClassLoader();
+			props.load(loader.getResourceAsStream("config.properties"));
 			
 			NETWORK_ID = Integer.parseInt(props.getProperty("drone.networkid"));
 			DRONE_ID = Integer.parseInt(props.getProperty("drone.id"));

@@ -1,0 +1,23 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="quadx.com.droidx.ui.camera.CameraFragment">
+
+    <android.custom.layout.FixedAspectRatioFrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        custom:aspectRatioWidth="8"
+        custom:aspectRatioHeight="5"
+        android:layout_gravity="center">
+
+        <SurfaceView
+            android:id="@+id/cameraSurfaceView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </android.custom.layout.FixedAspectRatioFrameLayout>
+
+</FrameLayout>
+

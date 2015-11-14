@@ -1,0 +1,244 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="quadx.com.droidx.ui.MainActivity">
+
+    <RelativeLayout
+        android:id="@+id/contentLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="25dp">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <FrameLayout
+                android:id="@+id/bgFragmentContainer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"></FrameLayout>
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right|bottom"
+                android:padding="15dp">
+
+                <android.custom.view.JoyButtonView
+                    android:id="@+id/joyButton"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:layout_gravity="center" />
+            </FrameLayout>
+
+        </FrameLayout>
+
+        <RelativeLayout
+            android:id="@+id/relativeLayout"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true">
+
+            <android.custom.view.VerticalSeekBar
+                android:id="@+id/engineFactorSeekBar"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="2dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="2dp"
+                android:max="100" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:background="#555"
+            android:layout_alignParentStart="true">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true">
+
+                <android.custom.view.BatteryStatusView
+                    android:layout_width="70dp"
+                    android:layout_height="20dp"
+                    android:id="@+id/batteryView"
+                    android:layout_marginLeft="10dp"
+                    android:layout_gravity="center_vertical" />
+
+                <ImageButton
+                    android:layout_width="60dp"
+                    android:layout_height="20dp"
+                    android:id="@+id/settingButton"
+                    android:layout_gravity="center_vertical"
+                    android:src="?attr/setting_icon"
+                    android:scaleType="fitCenter"
+                    android:background="@drawable/selector_header_button" />
+
+                <android.custom.view.SignalStrengthView
+                    android:layout_width="60dp"
+                    android:layout_height="20dp"
+                    android:id="@+id/signalView"
+                    android:layout_gravity="center_vertical"
+                    android:background="@android:color/transparent" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true">
+
+                <ImageButton
+                    android:layout_width="65dp"
+                    android:layout_height="20dp"
+                    android:id="@+id/viewChangeButton"
+                    android:layout_marginRight="0dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="?attr/view_change_icon"
+                    android:scaleType="fitCenter"
+                    android:background="@drawable/selector_header_button" />
+
+                <ImageButton
+                    android:layout_width="65dp"
+                    android:layout_height="20dp"
+                    android:id="@+id/cameraButton"
+                    android:layout_marginRight="0dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/camera_icon"
+                    android:scaleType="fitCenter"
+                    android:background="@drawable/selector_header_button" />
+
+                <ImageButton
+                    android:layout_width="65dp"
+                    android:layout_height="20dp"
+                    android:id="@+id/recordButton"
+                    android:layout_marginRight="0dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/record_icon"
+                    android:scaleType="fitCenter"
+                    android:background="@drawable/selector_header_button"/>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/emergencyButton"
+            android:layout_width="200dp"
+            android:layout_height="45dp"
+            android:layout_centerHorizontal="true"
+            android:text="@string/emergency_button" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_gravity="bottom">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:background="#555"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="false"
+            android:layout_alignParentStart="false">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="60dp"
+                android:layout_alignParentLeft="true">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="20dp"
+                    android:src="?attr/altitude_icon"
+                    android:scaleType="fitCenter"
+                    android:background="@android:color/transparent"
+                    android:layout_gravity="center" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_marginLeft="3dp"
+                    android:text="26.76 m"
+                    android:textSize="16dp"
+                    android:id="@+id/altitudeView"
+                    android:layout_gravity="center" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="60dp"
+                android:layout_alignParentRight="true">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="20dp"
+                    android:src="?attr/speed_icon"
+                    android:scaleType="fitCenter"
+                    android:background="@android:color/transparent"
+                    android:layout_gravity="center" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_marginLeft="3dp"
+                    android:text="1.5 km/h"
+                    android:textSize="16dp"
+                    android:id="@+id/speedView"
+                    android:layout_gravity="center" />
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <ToggleButton
+            android:id="@+id/startButton"
+            android:layout_width="125dp"
+            android:layout_height="45dp"
+            android:checked="false"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+
+    <!--
+        <android.custom.view.JoystickView
+            android:layout_width="180dp"
+            android:layout_height="150dp"
+            android:id="@+id/joyStick"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="15dp"
+            android:layout_marginRight="15dp" />
+    -->
+</FrameLayout>

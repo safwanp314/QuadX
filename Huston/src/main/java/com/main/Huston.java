@@ -28,7 +28,6 @@ public class Huston {
 			if(args.length>=2) {
 				baudRate = Integer.parseInt(args[1]);
 			}
-			
 			MavLinkRadioStream radioStream = new WinMavLinkRadioStream(port, baudRate);
 			drone = new Drone(DroneConfig.NETWORK_ID, DroneConfig.DRONE_ID, radioStream);
 			drone.connect();

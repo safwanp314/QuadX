@@ -1,0 +1,33 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="android:Theme.NoTitleBar">
+        <!-- Customize your theme here. -->
+    </style>
+
+    <style name="FullscreenTheme" parent="android:Theme.NoTitleBar">
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowBackground">@null</item>
+    </style>
+
+    <!-- Main activity screen theme -->
+    <attr name="view_change_icon" format="reference" />
+    <attr name="setting_icon" format="reference" />
+    <attr name="altitude_icon" format="reference" />
+    <attr name="speed_icon" format="reference" />
+
+    <style name="DarkscreenTheme" parent="FullscreenTheme">
+        <item name="setting_icon">@drawable/ic_setting_dark</item>
+        <item name="view_change_icon">@drawable/view_change_icon_light</item>
+        <item name="altitude_icon">@drawable/altitude_icon_light</item>
+        <item name="speed_icon">@drawable/speed_icon_light</item>
+    </style>
+
+    <style name="LightscreenTheme" parent="FullscreenTheme">
+        <item name="setting_icon">@drawable/ic_setting_light</item>
+        <item name="view_change_icon">@drawable/view_change_icon_dark</item>
+        <item name="altitude_icon">@drawable/altitude_icon_dark</item>
+        <item name="speed_icon">@drawable/speed_icon_dark</item>
+    </style>
+
+</resources>

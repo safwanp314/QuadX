@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">DroidX</string>
+
+    <string name="title_activity_connect">ConnectActivity</string>
+    <string name="title_activity_main">MainActivity</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="emergency_button">Emergency</string>
+
+    <string name="next_button">Next</string>
+</resources>
