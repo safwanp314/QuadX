@@ -1,11 +1,15 @@
 package quadx.com.droidx.ui;
 
+import android.app.PendingIntent;
+import android.app.TaskStackBuilder;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.custom.menu.ActionItem;
 import android.custom.view.JoyButtonView;
 import android.hardware.Camera;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.NotificationCompat;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -17,8 +21,6 @@ import com.google.android.gms.maps.GoogleMap;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.nio.channels.FileChannel;
 
 import quadx.com.droidx.R;
 import quadx.com.droidx.resources.Resources;
@@ -74,11 +76,14 @@ public class MainActivity extends FragmentActivity {
         viewChangeHandler.addActionFragment(satelliteMap, mapFragment);
         viewChangeHandler.addActionFragment(info, infoFragment);
         viewChangeHandler.addActionFragment(camera0, camera0Fragment);
-        //-------------------------------------------------------
+
         viewChangeHandler.show(normalMap);
         //-------------------------------------------------------
         ImageButton viewChangeButton = (ImageButton) findViewById(R.id.viewChangeButton);
         viewChangeButton.setOnClickListener(viewChangeHandler);
+        //-------------------------------------------------------
+        ImageButton settingButton = (ImageButton) findViewById(R.id.settingButton);
+        settingButton.setOnClickListener(new SettingButtonClickEventListener());
         //-------------------------------------------------------
         Resources.setInfoFragmentUpdater(infoFragment);
         Resources.setJoyButtonView(joyButtonView);
@@ -147,6 +152,15 @@ public class MainActivity extends FragmentActivity {
 
         @Override
         public void onStopTrackingTouch(SeekBar seekBar) {
+        }
+    }
+
+    private class SettingButtonClickEventListener implements View.OnClickListener {
+
+        @Override
+        public void onClick(View view) {
+            Intent intent = new Intent(getApplicationContext(), SettingsActivity.class);
+            startActivityForResult(intent, 0);
         }
     }
 }

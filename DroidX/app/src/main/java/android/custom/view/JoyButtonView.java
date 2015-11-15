@@ -26,6 +26,8 @@ public class JoyButtonView extends FrameLayout {
 
     private static final Logger DEBUG_LOGGER = LoggerFactory.getLogger("quadx.com.droidx.debug");
 
+    private boolean pressed;
+
     private ImageButton imageButton;
     private int imageButtonSize;
     private SensorManager sensorManager;
@@ -84,15 +86,29 @@ public class JoyButtonView extends FrameLayout {
         public boolean onTouch(View view, MotionEvent motionEvent) {
 
             if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
+                pressed = true;
                 FrameLayout.LayoutParams imageButtonParams = (FrameLayout.LayoutParams) imageButton.getLayoutParams();
-                int margin = (int) (0.10f * imageButtonSize);
+                int margin = (int) (0.12f * imageButtonSize);
                 imageButtonParams.setMargins(margin, margin, margin, margin);
                 imageButton.setLayoutParams(imageButtonParams);
             } else if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
+                pressed = false;
                 FrameLayout.LayoutParams imageButtonParams = (FrameLayout.LayoutParams) imageButton.getLayoutParams();
                 int margin = (int) (0.06f * imageButtonSize);
                 imageButtonParams.setMargins(margin, margin, margin, margin);
                 imageButton.setLayoutParams(imageButtonParams);
+
+                mValuesOrientation[0] = 0;
+                mValuesOrientation[1] = 0;
+                mValuesOrientation[2] = 0;
+                DEBUG_LOGGER.debug("x:" + mValuesOrientation[0] + " y:" + mValuesOrientation[1] + " z:" + mValuesOrientation[2]);
+                if(joyButtonEventListener != null) {
+                    JoyButtonEvent joyButtonEvent = new JoyButtonEvent();
+                    joyButtonEvent.xOrientation = mValuesOrientation[0];
+                    joyButtonEvent.yOrientation = mValuesOrientation[1];
+                    joyButtonEvent.zOrientation = mValuesOrientation[2];
+                    joyButtonEventListener.onSensorChanged(joyButtonEvent);
+                }
             }
             return false;
         }
@@ -104,7 +120,7 @@ public class JoyButtonView extends FrameLayout {
         }
 
         public void onSensorChanged(SensorEvent event) {
-            if (imageButton.isPressed()) {
+            if (pressed) {
                 boolean sensorChanged = false;
                 switch (event.sensor.getType()) {
                     case Sensor.TYPE_ACCELEROMETER:

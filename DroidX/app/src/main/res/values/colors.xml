@@ -2,4 +2,10 @@
 
     <color name="black_overlay">#66000000</color>
 
+    <color name="black_mind_shaft">#FF202020</color>
+
+    <color name="black_jet">#A0343434</color>
+
+    <color name="white_alto">#FFD0D0D0</color>
+
 </resources>

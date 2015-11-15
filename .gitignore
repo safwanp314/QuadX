@@ -45,3 +45,17 @@ Temporary Items
 #Eclipse files
 /.metadata/
 /RemoteSystemsTempFiles/
+*.apk
+DroidX/.idea/.name
+DroidX/.idea/compiler.xml
+DroidX/.idea/encodings.xml
+DroidX/.idea/copyright/profiles_settings.xml
+DroidX/.idea/vcs.xml
+*.apk
+DroidX/.idea/runConfigurations.xml
+DroidX/.idea/modules.xml
+DroidX/.idea/gradle.xml
+DroidX/.idea/inspectionProfiles/profiles_settings.xml
+DroidX/.idea/inspectionProfiles/Project_Default.xml
+*.apk
+DroidX/.idea/misc.xml

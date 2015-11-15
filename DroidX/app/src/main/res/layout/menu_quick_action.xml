@@ -16,7 +16,7 @@
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:gravity="center"
-        android:paddingTop="3dp"
+        android:paddingTop="5dp"
         android:scaleType="fitCenter" />
 
     <TextView
@@ -24,8 +24,8 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:textColor="#ff202020"
-        android:textSize="12sp"
+        android:textColor="#ffc0c0c0"
+        android:textSize="13sp"
         android:textStyle="bold"
-        android:paddingBottom="3dp" />
+        android:paddingBottom="1dp" />
 </LinearLayout>
