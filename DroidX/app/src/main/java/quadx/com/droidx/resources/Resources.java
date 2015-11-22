@@ -1,6 +1,6 @@
 package quadx.com.droidx.resources;
 
-import android.custom.view.JoyButtonView;
+import android.custom.view.OrientationJoyStickView;
 
 import quadx.com.droidx.ui.info.ControlInfoEventListener;
 import quadx.com.droidx.ui.info.DroneInfoEventListener;
@@ -25,10 +25,10 @@ public class Resources {
         drone.getEventHandler().addDroneEventListener(droneInfoEventListener);
         droneInfoEventListener.infoFragmentUpdater = infoFragmentUpdater;
     }
-
-    public static void setJoyButtonView(JoyButtonView joyButtonView) {
+/*
+    public static void setJoyButtonView(OrientationJoyStickView joyButtonView) {
         ControlInfoEventListener controlInfoEventListener = new ControlInfoEventListener();
         controlInfoEventListener.infoFragmentUpdater = infoFragmentUpdater;
         joyButtonView.setJoyButtonEventListener(controlInfoEventListener);
-    }
+    }*/
 }

@@ -59,3 +59,9 @@ DroidX/.idea/inspectionProfiles/profiles_settings.xml
 DroidX/.idea/inspectionProfiles/Project_Default.xml
 *.apk
 DroidX/.idea/misc.xml
+Huston-parent/.classpath
+*.project
+Huston-parent/.settings/org.eclipse.core.resources.prefs
+*.prefs
+*.classpath
+DroidX/app/app-release.apk

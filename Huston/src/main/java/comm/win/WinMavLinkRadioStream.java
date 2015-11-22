@@ -36,7 +36,6 @@ public class WinMavLinkRadioStream extends MavLinkRadioStream implements SerialP
 			while (portList.hasMoreElements()) {
 				CommPortIdentifier portId = (CommPortIdentifier) portList
 						.nextElement();
-				System.out.println(portId);
 				if (portId.getPortType() == CommPortIdentifier.PORT_SERIAL) {
 					if (portId.getName().equals(port)) {
 						serialPort = (SerialPort) portId.open("SerialPort"+ port, DEFAULT_MONITOR_INTERVAL);
@@ -46,7 +45,6 @@ public class WinMavLinkRadioStream extends MavLinkRadioStream implements SerialP
 						serialOutStream = serialPort.getOutputStream();
 						serialInStream = serialPort.getInputStream();
 						connected = true;
-						System.out.println("Serial port found " + portId.getName());	
 					}
 				}
 			}

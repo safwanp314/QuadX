@@ -18,7 +18,7 @@ public class GoogleAccountManager {
         this.context = context;
     }
 
-    public List<Account> getGoogleAccounts() {
+    public List<Account> getAccounts() {
 
         List<Account> accounts = new ArrayList<>();
         AccountManager manager = (AccountManager) context.getSystemService(Context.ACCOUNT_SERVICE);
@@ -30,5 +30,17 @@ public class GoogleAccountManager {
             }
         }
         return accounts;
+    }
+
+    public Account getAccountByUserName(String userName) {
+        AccountManager manager = (AccountManager) context.getSystemService(Context.ACCOUNT_SERVICE);
+        Account[] list = manager.getAccounts();
+
+        for (Account account : list) {
+            if (account.name.equals(userName) && account.type.equalsIgnoreCase("com.google")) {
+                return account;
+            }
+        }
+        return null;
     }
 }

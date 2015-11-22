@@ -23,7 +23,7 @@ public class SettingsFragment extends PreferenceFragment {
         addPreferencesFromResource(R.xml.settings);
 
         final GoogleAccountManager accountManager = new GoogleAccountManager(getActivity());
-        List<Account> accounts = accountManager.getGoogleAccounts();
+        List<Account> accounts = accountManager.getAccounts();
 
         final ListPreference listPreference = (ListPreference) findPreference("prefUsername");
 

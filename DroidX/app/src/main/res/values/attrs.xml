@@ -7,7 +7,7 @@
     <declare-styleable name="VerticalSeekBar">
     </declare-styleable>
 
-    <declare-styleable name="JoystickView">
+    <declare-styleable name="OnScreenJoyStick3DView">
     </declare-styleable>
 
     <declare-styleable name="FixedAspectRatioFrameLayout">

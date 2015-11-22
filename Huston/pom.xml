@@ -29,7 +29,7 @@
 		<dependency>
 			<groupId>quadx</groupId>
 			<artifactId>drone.controller</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>${version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>

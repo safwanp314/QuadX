@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/joyStickBg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@android:color/transparent"
+        android:src="@drawable/onscreen_joystick_bg" />
+
+    <ImageView
+        android:id="@+id/joyStickLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@android:color/transparent"
+        android:src="@drawable/onscreen_joystick_left_button"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/joyStickRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@android:color/transparent"
+        android:src="@drawable/onscreen_joystick_right_button"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/joyStickTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@android:color/transparent"
+        android:src="@drawable/onscreen_joystick_top_button"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/joyStickBottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@android:color/transparent"
+        android:src="@drawable/onscreen_joystick_bottom_button"
+        android:visibility="gone" />
+</FrameLayout>

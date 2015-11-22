@@ -7,43 +7,90 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="quadx.com.droidx.ui.MainActivity">
+    tools:context=".ui.MainActivity">
 
     <RelativeLayout
         android:id="@+id/contentLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
-        android:layout_marginTop="25dp"
-        android:layout_marginBottom="25dp">
+        android:layout_marginBottom="25dp"
+        android:layout_marginTop="25dp">
 
-        <FrameLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <FrameLayout
                 android:id="@+id/bgFragmentContainer"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_vertical"></FrameLayout>
+                android:layout_height="match_parent"></FrameLayout>
 
             <FrameLayout
+                android:id="@+id/onScreenJoyStickLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:visibility="visible"
+                android:paddingBottom="15dp">
+
+                <android.custom.view.OnScreenJoyStickView
+                    android:id="@+id/leftOnScreenJoyStickView"
+                    android:layout_width="260dp"
+                    android:layout_height="260dp"
+                    android:layout_gravity="left"
+                    android:paddingLeft="35dp" />
+
+                <android.custom.view.OnScreenJoyStickView
+                    android:id="@+id/rightOnScreenJoyStickView"
+                    android:layout_width="260dp"
+                    android:layout_height="260dp"
+                    android:layout_gravity="right"
+                    android:paddingRight="35dp" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/orientationJoyStickLayout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="right|bottom"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:visibility="gone"
                 android:padding="15dp">
 
-                <android.custom.view.JoyButtonView
-                    android:id="@+id/joyButton"
-                    android:layout_width="55dp"
-                    android:layout_height="55dp"
+                <android.custom.view.OrientationJoyStickView
+                    android:id="@+id/orientationJoyStickView"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
                     android:layout_gravity="center" />
             </FrameLayout>
 
-        </FrameLayout>
+            <FrameLayout
+                android:id="@+id/onScreenJoyStick3DLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:visibility="gone"
+                android:padding="10dp">
+
+                <android.custom.view.OnScreenJoyStick3DView
+                    android:id="@+id/leftOnScreenJoyStick3DView"
+                    android:layout_width="180dp"
+                    android:layout_height="150dp"
+                    android:layout_gravity="left"
+                    android:paddingLeft="35dp" />
+
+                <android.custom.view.OnScreenJoyStick3DView
+                    android:id="@+id/rightOnScreenJoyStick3DView"
+                    android:layout_width="180dp"
+                    android:layout_height="150dp"
+                    android:layout_gravity="right"
+                    android:paddingRight="35dp" />
+            </FrameLayout>
+
+        </RelativeLayout>
 
         <RelativeLayout
-            android:id="@+id/relativeLayout"
             android:layout_width="50dp"
             android:layout_height="match_parent"
             android:layout_alignParentLeft="true"
@@ -88,19 +135,9 @@
             android:id="@+id/startButton"
             android:layout_width="125dp"
             android:layout_height="45dp"
-            android:checked="false"
             android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true" />
+            android:layout_centerHorizontal="true"
+            android:checked="false" />
     </RelativeLayout>
 
-    <!--
-        <android.custom.view.JoystickView
-            android:layout_width="180dp"
-            android:layout_height="150dp"
-            android:id="@+id/joyStick"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="15dp"
-            android:layout_marginRight="15dp" />
-    -->
 </FrameLayout>

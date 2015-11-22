@@ -22,7 +22,7 @@ import quadx.com.droidx.R;
 /**
  * TODO: document your custom view class.
  */
-public class JoyButtonView extends FrameLayout {
+public class OrientationJoyStickView extends FrameLayout implements JoyStickView {
 
     private static final Logger DEBUG_LOGGER = LoggerFactory.getLogger("quadx.com.droidx.debug");
 
@@ -43,17 +43,17 @@ public class JoyButtonView extends FrameLayout {
         this.joyButtonEventListener = joyButtonEventListener;
     }
 
-    public JoyButtonView(Context context) {
+    public OrientationJoyStickView(Context context) {
         super(context);
         init(null, 0);
     }
 
-    public JoyButtonView(Context context, AttributeSet attrs) {
+    public OrientationJoyStickView(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(attrs, 0);
     }
 
-    public JoyButtonView(Context context, AttributeSet attrs, int defStyle) {
+    public OrientationJoyStickView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         init(attrs, defStyle);
     }
