@@ -7,47 +7,12 @@
 
     <string name="action_settings">Settings</string>
     <string name="emergency_button">Emergency</string>
+    <string name="connect_button">Connect</string>
 
-    <string name="next_button">Next</string>
-
-    <string-array name="syncFrequency">
-        <item name="1">Second</item>
-        <item name="2">Two second</item>
-        <item name="3">Three second</item>
-        <item name="5">Five second</item>
-        <item name="10">Ten second</item>
-        <item name="0">Never (Update maually)</item>
-    </string-array>
-    <string-array name="syncFrequencyValues">
-        <item name="1">1</item>
-        <item name="2">2</item>
-        <item name="3">3</item>
-        <item name="5">5</item>
-        <item name="10">10</item>
-        <item name="0">0</item>
+    <string-array name="joystick_names">
+        <item>On-Screen Joystick</item>
+        <item>On-Screen Joystick-3D</item>
+        <item>Orientation Joystick</item>
     </string-array>
 
-    <string-array name="joystick">
-        <item name="1">OnScreen Joystick</item>
-        <item name="2">Orientation Joystick</item>
-        <item name="3">OnScreen Joystick 3D</item>
-    </string-array>
-    <string-array name="joystickValues">
-        <item name="1">OnScreenJoyStick</item>
-        <item name="2">OrientationJoyStick</item>
-        <item name="3">OnScreenJoyStick3D</item>
-    </string-array>
-
-    <string name="pref_user_name">Username</string>
-    <string name="pref_user_name_summary">Set your username</string>
-    <string name="pref_joy_stick_name">JoyStick</string>
-    <string name="pref_joy_stick_summary">Select your joystick</string>
-    <string name="pref_sync_frequency">Sync frequency</string>
-    <string name="pref_sync_frequency_summary">Set the sync frequency</string>
-    <string name="pref_send_report">Send crash reports</string>
-    <string name="pref_send_report_summary">Helps to fix bugs</string>
-
-    <string name="pref_user_profile">User Profile</string>
-    <string name="pref_joy_stick">Joystick</string>
-    <string name="pref_update_setting">Update Settings</string>
 </resources>

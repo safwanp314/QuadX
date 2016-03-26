@@ -1,5 +1,6 @@
 package quadx.com.droidx.resources;
 
+import android.app.Activity;
 import android.custom.view.OrientationJoyStickView;
 
 import quadx.com.droidx.ui.info.ControlInfoEventListener;
@@ -12,7 +13,12 @@ import quadx.drone.controller.Drone;
  */
 public class Resources {
 
+    public static boolean usbPortConnect = false;
     public static Drone drone;
+    public static Activity droneActivity;
+
+    public static final String CAMERA_URI = "https://ia600401.us.archive.org/19/items/ksnn_compilation_master_the_internet/ksnn_compilation_master_the_internet_512kb.mp4";
+
     private static InfoFragmentUpdater infoFragmentUpdater;
 
     public static void setDrone(Drone drone) {

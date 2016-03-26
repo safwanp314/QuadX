@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import org.slf4j.Logger;
@@ -30,11 +31,10 @@ public class QuickActionBar extends PopupWindows {
     int xPos, yPos;
     private int pos = 1;
 
-    public QuickActionBar(View anchor) {
+    public QuickActionBar(Context context) {
 
-        super(anchor);
+        super(context);
 
-        final Context context = anchor.getContext();
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         root = inflater.inflate(R.layout.menu_popup_windows, null);
 
@@ -91,34 +91,37 @@ public class QuickActionBar extends PopupWindows {
     }
 
     public void show() {
-        int screenWidth = windowManager.getDefaultDisplay().getWidth();
-        int screenHeight = windowManager.getDefaultDisplay().getHeight();
 
-        root.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-        root.measure(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        int rootWidth = Math.min(root.getMeasuredWidth(), (int) (0.75 * screenWidth));
-        int rootHeight = Math.min(root.getMeasuredHeight(), (int) (0.75 * screenHeight));
+        if (anchor != null) {
+            int screenWidth = windowManager.getDefaultDisplay().getWidth();
+            int screenHeight = windowManager.getDefaultDisplay().getHeight();
 
-        preShow(rootWidth, rootHeight);
+            root.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+            root.measure(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            int rootWidth = Math.min(root.getMeasuredWidth(), (int) (0.75 * screenWidth));
+            int rootHeight = Math.min(root.getMeasuredHeight(), (int) (0.75 * screenHeight));
 
-        int[] location = new int[2];
-        anchor.getLocationOnScreen(location);
-        Rect anchorRect = new Rect(location[0], location[1], location[0] + anchor.getWidth(), location[1] + anchor.getHeight());
+            preShow(rootWidth, rootHeight);
 
-        xPos = location[0];
-        yPos = anchorRect.top - rootHeight;
-        boolean popupOnTop = true;
+            int[] location = new int[2];
+            anchor.getLocationOnScreen(location);
+            Rect anchorRect = new Rect(location[0], location[1], location[0] + anchor.getWidth(), location[1] + anchor.getHeight());
 
-        int pointerMargin = anchorRect.centerX() - xPos;
-        if (xPos + rootWidth > screenWidth) {
-            pointerMargin = anchorRect.centerX() - (screenWidth - rootWidth);
+            xPos = location[0];
+            yPos = anchorRect.top - rootHeight;
+            boolean popupOnTop = true;
+
+            int pointerMargin = anchorRect.centerX() - xPos;
+            if (xPos + rootWidth > screenWidth) {
+                pointerMargin = anchorRect.centerX() - (screenWidth - rootWidth);
+            }
+            if (screenHeight - anchorRect.bottom > rootHeight) {
+                yPos = anchorRect.bottom;
+                popupOnTop = false;
+            }
+
+            displayDirectionChoice(((popupOnTop) ? R.id.arrow_down : R.id.arrow_up), pointerMargin);
+            window.showAtLocation(this.anchor, Gravity.LEFT | Gravity.TOP, xPos, yPos);
         }
-        if (screenHeight - anchorRect.bottom > rootHeight) {
-            yPos = anchorRect.bottom;
-            popupOnTop = false;
-        }
-
-        displayDirectionChoice(((popupOnTop) ? R.id.arrow_down : R.id.arrow_up), pointerMargin);
-        window.showAtLocation(this.anchor, Gravity.LEFT | Gravity.TOP, xPos, yPos);
     }
 }

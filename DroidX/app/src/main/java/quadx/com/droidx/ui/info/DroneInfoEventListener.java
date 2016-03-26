@@ -28,6 +28,9 @@ public class DroneInfoEventListener implements DroneEventListener {
         InfoMap.ITEM_MAP.put("Latitude", String.format("%.5f", drone.getNav().latitude));
         InfoMap.ITEM_MAP.put("Longitude", String.format("%.5f", drone.getNav().longitude));
 
+        InfoMap.ITEM_MAP.put("Battery", String.format("%.0f%%", 0.0f));
+        InfoMap.ITEM_MAP.put("Signal", String.format("%.0f", 0.0f));
+
         if(infoFragmentUpdater!=null) {
             infoFragmentUpdater.updateInfo();
         }

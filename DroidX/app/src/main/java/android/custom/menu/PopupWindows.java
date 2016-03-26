@@ -15,17 +15,16 @@ import android.widget.PopupWindow;
  */
 public class PopupWindows {
 
-    protected final View anchor;
     protected final PopupWindow window;
-    private View root;
     protected final WindowManager windowManager;
+    protected View anchor;
+    private View root;
 
     private Drawable background = null;
 
-    public PopupWindows(View anchor) {
+    public PopupWindows(Context context) {
 
-        this.anchor = anchor;
-        this.window = new PopupWindow(anchor.getContext());
+        this.window = new PopupWindow(context);
 
         // when a touch even happens outside of the window
         // make the window go away
@@ -40,7 +39,7 @@ public class PopupWindows {
             }
         });
 
-        this.windowManager = (WindowManager) this.anchor.getContext().getSystemService(Context.WINDOW_SERVICE);
+        this.windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
         onCreate();
     }
 
@@ -74,6 +73,10 @@ public class PopupWindows {
 
     public void setContentView(View root) {
         this.root = root;
+    }
+
+    public void setAnchor(View anchor) {
+        this.anchor = anchor;
     }
 
     public void dismiss() {

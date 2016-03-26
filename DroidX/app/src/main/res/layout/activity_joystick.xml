@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal" >
+
+    <RelativeLayout
+        android:layout_width="60dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <android.custom.view.VerticalSeekBar
+            android:id="@+id/engineFactorSeekBar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="2dp"
+            android:layout_marginTop="2dp"
+            android:paddingTop="7dp"
+            android:paddingBottom="22dp"
+            android:max="100" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/onScreenJoyStickLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible">
+
+        <FrameLayout
+            android:id="@+id/onScreenJoySticks"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true">
+
+            <android.custom.view.OnScreenJoyStickView
+                android:id="@+id/leftOnScreenJoyStickView"
+                android:layout_width="225dp"
+                android:layout_height="225dp"
+                android:layout_gravity="left"
+                android:layout_marginLeft="5dp" />
+
+            <android.custom.view.OnScreenJoyStickView
+                android:id="@+id/rightOnScreenJoyStickView"
+                android:layout_width="225dp"
+                android:layout_height="225dp"
+                android:layout_gravity="right"
+                android:layout_marginRight="35dp" />
+        </FrameLayout>
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hide"
+            android:id="@+id/onScreenJoyStickViewHideButton"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="2dp"
+            android:layout_marginRight="5dp" />
+    </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/orientationJoyStickLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:padding="15dp"
+        android:visibility="gone">
+
+        <android.custom.view.OrientationJoyStickView
+            android:id="@+id/orientationJoyStickView"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_gravity="center" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/onScreenJoyStick3DLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:padding="10dp"
+        android:visibility="gone">
+
+        <android.custom.view.OnScreenJoyStick3DView
+            android:id="@+id/leftOnScreenJoyStick3DView"
+            android:layout_width="180dp"
+            android:layout_height="150dp"
+            android:layout_gravity="left"
+            android:paddingLeft="35dp" />
+
+        <android.custom.view.OnScreenJoyStick3DView
+            android:id="@+id/rightOnScreenJoyStick3DView"
+            android:layout_width="180dp"
+            android:layout_height="150dp"
+            android:layout_gravity="right"
+            android:paddingRight="35dp" />
+    </FrameLayout>
+
+</LinearLayout>

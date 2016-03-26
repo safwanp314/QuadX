@@ -40,7 +40,7 @@
         </rollingPolicy>
     </appender>
 
-    <logger name="quadx.com.droidx.debug" additivity="false" level="debug">
+    <logger name="quadx.com.droidx.debug" additivity="false" level="trace">
         <appender-ref ref="DEBUG-LOG" />
     </logger>
     <logger name="quadx.com.droidx.drone.log" additivity="false" level="info">

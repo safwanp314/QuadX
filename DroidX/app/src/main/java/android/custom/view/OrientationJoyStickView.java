@@ -58,17 +58,6 @@ public class OrientationJoyStickView extends FrameLayout implements JoyStickView
         init(attrs, defStyle);
     }
 
-    @Override
-    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
-        super.onSizeChanged(w, h, oldw, oldh);
-        imageButtonSize = (w + h) / 2;
-
-        FrameLayout.LayoutParams imageButtonParams = (FrameLayout.LayoutParams) imageButton.getLayoutParams();
-        int margin = (int) (0.06f * imageButtonSize);
-        imageButtonParams.setMargins(margin, margin, margin, margin);
-        imageButton.setLayoutParams(imageButtonParams);
-    }
-
     private void init(AttributeSet attrs, int defStyle) {
 
         LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -79,6 +68,17 @@ public class OrientationJoyStickView extends FrameLayout implements JoyStickView
 
         setListners(sensorManager, mEventListener);
         imageButton.setOnTouchListener(mTouchListener);
+    }
+
+    @Override
+    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
+        super.onSizeChanged(w, h, oldw, oldh);
+        imageButtonSize = (w + h) / 2;
+
+        FrameLayout.LayoutParams imageButtonParams = (FrameLayout.LayoutParams) imageButton.getLayoutParams();
+        int margin = (int) (0.06f * imageButtonSize);
+        imageButtonParams.setMargins(margin, margin, margin, margin);
+        imageButton.setLayoutParams(imageButtonParams);
     }
 
     private final OnTouchListener mTouchListener = new OnTouchListener() {

@@ -7,6 +7,6 @@
     For more on layout aliases, see:
     http://developer.android.com/training/multiscreen/screensizes.html#TaskUseAliasFilters
     -->
-    <item name="fragment_droneinfo" type="layout">@layout/fragment_droneinfo_grid</item>
+    <item name="activity_droneinfo" type="layout">@layout/activity_droneinfo_grid</item>
 
 </resources>

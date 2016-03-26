@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/info_bg_tex"
+    tools:context="quadx.com.droidx.ui.info.InfoActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/footer_height"
+        android:layout_marginTop="@dimen/header_height">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal|center_vertical">
+
+            <GridView
+                android:id="@+id/droneInfoList"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginBottom="30dp"
+                android:layout_marginLeft="35dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginTop="30dp"
+                android:contextClickable="false"
+                android:numColumns="4"
+                android:transitionGroup="false"
+                android:verticalSpacing="12dp" />
+        </FrameLayout>
+
+        <include layout="@layout/activity_joystick" />
+    </RelativeLayout>
+
+    <include layout="@layout/activity_header" />
+
+    <include layout="@layout/activity_footer" />
+</FrameLayout>

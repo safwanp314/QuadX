@@ -1,33 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-    <PreferenceCategory android:title="@string/pref_user_profile">
-        <ListPreference
-            android:key="prefUsername"
-            android:summary="@string/pref_user_name_summary"
-            android:title="@string/pref_user_name" />
+
+    <PreferenceCategory android:title="User Profile" >
+        <EditTextPreference
+            android:title="User"
+            android:summary="Set Username"
+            android:key="prefUsername"/>
     </PreferenceCategory>
 
-    <PreferenceCategory android:title="@string/pref_joy_stick">
+    <PreferenceCategory android:title="Joystick" >
         <ListPreference
-            android:key="prefJoyStick"
-            android:entries="@array/joystick"
-            android:entryValues="@array/joystickValues"
-            android:summary="@string/pref_joy_stick_summary"
-            android:title="@string/pref_joy_stick_name" />
+            android:title="Joystick"
+            android:summary="Set Joystick"
+            android:key="prefJoystick"
+            android:entries="@array/joystick_names"
+            android:entryValues="@array/joystick_names"/>
     </PreferenceCategory>
 
-    <PreferenceCategory android:title="@string/pref_update_setting">
-        <CheckBoxPreference
-            android:key="prefSendReport"
-            android:defaultValue="false"
-            android:summary="@string/pref_send_report_summary"
-            android:title="@string/pref_send_report"></CheckBoxPreference>
-
-        <ListPreference
-            android:key="prefSyncFrequency"
-            android:entries="@array/syncFrequency"
-            android:entryValues="@array/syncFrequencyValues"
-            android:summary="@string/pref_sync_frequency_summary"
-            android:title="@string/pref_sync_frequency" />
-    </PreferenceCategory>
 </PreferenceScreen>

@@ -14,8 +14,7 @@ import quadx.com.droidx.R;
  */
 public class SignalStrengthView extends ImageView {
 
-    private Bitmap mSignalIcons;
-    private int strength;
+    private int strength = 100;
 
     public SignalStrengthView(Context context) {
         super(context);
@@ -34,20 +33,23 @@ public class SignalStrengthView extends ImageView {
 
     private void init(AttributeSet attrs, int defStyle) {
 
-        mSignalIcons = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.signal_icons);
-        setSignalStreght(90);
+        setSignalStregth(strength);
     }
 
-    public void setSignalStreght(int strength) {
+    public void setSignalStregth(int strength) {
         this.strength = strength;
+        refreshSignalStregthIcons(strength);
+    }
+
+    public void refreshSignalStregthIcons(int strength) {
 
         int imageNum = (int) Math.ceil(strength/20);
         int imageWidth = 80 + (imageNum)*(232+41);
 
-        Bitmap statusBitmap = Bitmap.createBitmap(mSignalIcons, imageWidth, 20, 273, 250);
+        Bitmap mSignalIcons = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.signal_icons);
+        Bitmap statusBitmap = Bitmap.createBitmap(mSignalIcons, imageWidth, 16, 273, 170);
         setImageBitmap(statusBitmap);
         setScaleType(ImageView.ScaleType.FIT_CENTER);
         setBackgroundColor(Color.TRANSPARENT);
-
     }
 }

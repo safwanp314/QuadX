@@ -29,8 +29,7 @@ public class BatteryStatusView extends FrameLayout {
 
     private ImageView mBatteryIcon;
     private TextView mBatteryText;
-    private Bitmap mBatteryIcons;
-    private int status;
+    private int status = 10;
 
     public BatteryStatusView(Context context) {
         super(context);
@@ -53,17 +52,22 @@ public class BatteryStatusView extends FrameLayout {
         inflater.inflate(R.layout.view_battery_status, this);
 
         mBatteryIcon = (ImageView) findViewById(R.id.batteryIcon);
-        mBatteryIcons = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.battery_icons);
         mBatteryText = (TextView) findViewById(R.id.batteryText);
-        setBatteryStatus(70);
+        setBatteryStatus(status);
     }
 
     public void setBatteryStatus(int status) {
+        this.status = status;
+        refreshBatteryStatusIcons(status);
+    }
+
+    public void refreshBatteryStatusIcons(int status) {
         this.status = status;
 
         int imageNum = (int) Math.ceil(status/20);
         int heightImage = 16 + (imageNum)*(216+32);
 
+        Bitmap mBatteryIcons = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.battery_icons);
         Bitmap statusBitmap = Bitmap.createBitmap(mBatteryIcons, 40, heightImage, 512, 216);
         mBatteryIcon.setImageBitmap(statusBitmap);
         mBatteryIcon.setScaleType(ImageView.ScaleType.FIT_CENTER);

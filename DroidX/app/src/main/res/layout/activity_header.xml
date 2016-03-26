@@ -1,79 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="25dp"
-    android:layout_alignParentStart="true"
-    android:background="?attr/title_background">
+    android:layout_height="wrap_content">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_alignParentLeft="true"
-        android:layout_centerVertical="true"
-        android:orientation="horizontal">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/header_height"
+        android:layout_gravity="top"
+        android:background="?attr/title_background">
 
-        <android.custom.view.BatteryStatusView
-            android:id="@+id/batteryView"
-            android:layout_width="70dp"
-            android:layout_height="20dp"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="10dp" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:orientation="horizontal">
 
-        <ImageButton
-            android:id="@+id/settingButton"
-            android:layout_width="60dp"
-            android:layout_height="20dp"
-            android:layout_gravity="center_vertical"
-            android:background="@drawable/selector_header_button"
-            android:scaleType="fitCenter"
-            android:src="?attr/setting_icon" />
+            <android.custom.view.BatteryStatusView
+                android:id="@+id/batteryView"
+                android:layout_width="70dp"
+                android:layout_height="@dimen/header_height"
+                android:layout_gravity="center_vertical"
+                android:paddingTop="3dp"
+                android:paddingBottom="2dp"
+                android:layout_marginLeft="10dp" />
 
-        <android.custom.view.SignalStrengthView
-            android:id="@+id/signalView"
-            android:layout_width="60dp"
-            android:layout_height="20dp"
-            android:layout_gravity="center_vertical"
-            android:background="@android:color/transparent" />
+            <ImageButton
+                android:id="@+id/settingButton"
+                android:layout_width="60dp"
+                android:layout_height="@dimen/header_height"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/selector_header_button"
+                android:scaleType="fitCenter"
+                android:paddingTop="3dp"
+                android:paddingBottom="2dp"
+                android:src="?attr/setting_icon" />
 
-    </LinearLayout>
+            <android.custom.view.SignalStrengthView
+                android:id="@+id/signalView"
+                android:layout_width="60dp"
+                android:layout_height="@dimen/header_height"
+                android:layout_gravity="center_vertical"
+                android:paddingTop="3dp"
+                android:paddingBottom="2dp"
+                android:background="@android:color/transparent" />
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:orientation="horizontal">
+        </LinearLayout>
 
-        <ImageButton
-            android:id="@+id/viewChangeButton"
-            android:layout_width="65dp"
-            android:layout_height="20dp"
-            android:layout_gravity="center_vertical"
-            android:layout_marginRight="0dp"
-            android:background="@drawable/selector_header_button"
-            android:scaleType="fitCenter"
-            android:src="?attr/view_change_icon" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:orientation="horizontal">
 
-        <ImageButton
-            android:id="@+id/cameraButton"
-            android:layout_width="65dp"
-            android:layout_height="20dp"
-            android:layout_gravity="center_vertical"
-            android:layout_marginRight="0dp"
-            android:background="@drawable/selector_header_button"
-            android:scaleType="fitCenter"
-            android:src="@drawable/camera_icon" />
+            <ImageButton
+                android:id="@+id/viewChangeButton"
+                android:layout_width="65dp"
+                android:layout_height="@dimen/header_height"
+                android:layout_gravity="center_vertical"
+                android:paddingTop="3dp"
+                android:paddingBottom="2dp"
+                android:layout_marginRight="0dp"
+                android:background="@drawable/selector_header_button"
+                android:scaleType="fitCenter"
+                android:src="?attr/view_change_icon" />
 
-        <ImageButton
-            android:id="@+id/recordButton"
-            android:layout_width="65dp"
-            android:layout_height="20dp"
-            android:layout_gravity="center_vertical"
-            android:layout_marginRight="0dp"
-            android:background="@drawable/selector_header_button"
-            android:scaleType="fitCenter"
-            android:src="@drawable/record_icon" />
+            <ImageButton
+                android:id="@+id/cameraButton"
+                android:layout_width="65dp"
+                android:layout_height="@dimen/header_height"
+                android:layout_gravity="center_vertical"
+                android:paddingTop="3dp"
+                android:paddingBottom="2dp"
+                android:layout_marginRight="0dp"
+                android:background="@drawable/selector_header_button"
+                android:scaleType="fitCenter"
+                android:src="@drawable/camera_icon" />
 
-    </LinearLayout>
+            <ImageButton
+                android:id="@+id/recordButton"
+                android:layout_width="65dp"
+                android:layout_height="@dimen/header_height"
+                android:layout_gravity="center_vertical"
+                android:paddingTop="3dp"
+                android:paddingBottom="2dp"
+                android:layout_marginRight="0dp"
+                android:background="@drawable/selector_header_button"
+                android:scaleType="fitCenter"
+                android:src="@drawable/record_icon" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/emergencyButton"
+        android:layout_width="200dp"
+        android:layout_height="45dp"
+        android:layout_centerHorizontal="true"
+        android:text="@string/emergency_button" />
 
 </RelativeLayout>

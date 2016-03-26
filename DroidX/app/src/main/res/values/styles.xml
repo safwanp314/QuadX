@@ -37,7 +37,6 @@
     </style>
     <style name="SettingscreenTheme" parent="android:Theme.WithActionBar">
         <item name="android:actionBarStyle">@style/ActionBarTheme</item>
-        <item name="android:background">@color/black_jet</item>
     </style>
 
 </resources>

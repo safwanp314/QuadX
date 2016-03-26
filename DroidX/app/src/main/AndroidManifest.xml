@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="quadx.com.droidx">
+    package="quadx.com.droidx" >
 
     <permission
         android:name="quadx.com.droidx.permission.MAPS_RECEIVE"
@@ -27,40 +27,64 @@
         android:required="true" />
 
     <application
-        android:name="quadx.com.droidx.DroidXApplication"
-        android:allowBackup="true"
+        android:name=".DroidXApplication"
         android:icon="@drawable/droidx_icon"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme"
-        android:screenOrientation="landscape">
+        android:largeHeap="true"
+        android:theme="@style/AppTheme" >
+
+        <service
+            android:name=".UsbPortConnectService"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="quadx.com.droidx.action.USB_PORT_CONNECT_SERVICE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED"
+                android:resource="@xml/device_filter" />
+        </service>
+
         <activity
             android:name=".ui.ConnectActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:screenOrientation="landscape">
+            android:screenOrientation="landscape"
+            android:theme="@style/DarkscreenTheme" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            <intent-filter>
-                <action android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED" />
-            </intent-filter>
-
-            <meta-data
-                android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED"
-                android:resource="@xml/device_filter" />
         </activity>
+
         <activity
-            android:name=".ui.MainActivity"
-            android:configChanges="orientation|screenSize"
-            android:theme="@style/DarkscreenTheme"
-            android:screenOrientation="landscape"></activity>
+            android:name=".ui.map.MapActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="landscape"
+            android:theme="@style/DarkscreenTheme" >
+        </activity>
+
+        <activity
+            android:name=".ui.info.InfoActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="landscape"
+            android:theme="@style/DarkscreenTheme" >
+        </activity>
+
+        <activity
+            android:name=".ui.camera.CameraActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="landscape"
+            android:theme="@style/DarkscreenTheme" >
+        </activity>
+
         <activity
             android:name=".ui.SettingsActivity"
             android:configChanges="orientation|screenSize"
-            android:label="@string/title_activity_settings"
             android:icon="@drawable/ic_setting_dark"
-            android:theme="@style/SettingscreenTheme"
-            android:screenOrientation="landscape"></activity>
+            android:label="@string/title_activity_settings"
+            android:theme="@style/SettingscreenTheme" />
 
         <meta-data
             android:name="com.google.android.gms.version"
